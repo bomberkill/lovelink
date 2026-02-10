@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LoveLink 💌
 
-## Getting Started
+> **Transformez vos émotions en une expérience digitale inoubliable.**
 
-First, run the development server:
+LoveLink est une plateforme web premium permettant de créer des expériences romantiques interactives et uniques (demandes en mariage, anniversaires, déclarations, excuses...).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![LoveLink Banner](/public/logo.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Fonctionnalités Clés
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Live Story 📖
+Une expérience narrative immersive où l'histoire s'écrit sous les yeux de l'utilisateur.
+- **Effet Machine à Écrire** : Le texte s'affiche lettre par lettre pour un réalisme émotionnel.
+- **Timeline Multimédia** : Photos polaroid, dates clés et musiques d'ambiance synchronisées.
+- **Mode Aléatoire** : Plusieurs histoires de démonstration sont chargées aléatoirement pour montrer la variété des tons (Amour, Rupture, Espoir...).
+- **Design Réactif** : Une interface épurée qui met en valeur le contenu.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Impossible to Say No 💍
+Une page ludique et interactive pour les demandes importantes.
+- **Bouton Fuyant** : Le bouton "Non" s'échappe au survol de la souris.
+- **Célébration** : Confettis et message de réussite lorsque le "Oui" est cliqué.
 
-## Learn More
+### 3. Fonctionnalités Virales 🚀
+- **Partage Intelligent** : Bouton de partage natif (Mobile) ou Copie presse-papier (PC) avec liens uniques pour chaque histoire.
+- **OpenGraph** : Les liens partagés affichent une prévisusalisation riche (Titre, Description, Image) sur WhatsApp, iMessage, Twitter, etc.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Stack Technique
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Ce projet est construit avec les dernières technologies web pour une performance et une fluidité optimales :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework** : [Next.js 14](https://nextjs.org/) (App Router)
+- **Langage** : [TypeScript](https://www.typescriptlang.org/)
+- **Styling** : [Tailwind CSS](https://tailwindcss.com/)
+- **Animations** : [Framer Motion](https://www.framer.com/motion/)
+- **Font** : Playfair Display (Serif) & Inter (Sans)
+- **Déploiement** : Compatible Vercel / Netlify
 
-## Deploy on Vercel
+## 🚀 Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1.  **Cloner le projet** :
+    ```bash
+    git clone https://github.com/votre-username/lovelink.git
+    cd lovelink
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+*Fait avec ❤️ par LoveLink Studios.*
