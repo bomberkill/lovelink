@@ -4,7 +4,7 @@
 
 LoveLink est une plateforme web premium permettant de créer des expériences romantiques interactives et uniques (demandes en mariage, anniversaires, déclarations, excuses...).
 
-![LoveLink Banner](/public/logo.png)
+![LoveLink Banner](/lovelink/app/favicon.ico)
 
 ## ✨ Fonctionnalités Clés
 
