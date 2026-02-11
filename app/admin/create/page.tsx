@@ -19,7 +19,8 @@ export default function AdminCreateRedirect() {
 
         // Check if blocked
         if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-            setBlocked(true);
+            const timer = setTimeout(() => setBlocked(true), 0);
+            return () => clearTimeout(timer);
         } else {
             // Optional: Redirect current tab back to home or keep it open?
             // User asked "dont close the site". Keeping this page open with a "Back" button is safest.
@@ -41,6 +42,13 @@ export default function AdminCreateRedirect() {
                 <Typography variant="body" className="text-stone-600">
                     Nous vous redirigeons vers WhatsApp pour finaliser votre demande...
                 </Typography>
+
+                {blocked && (
+                    <div className="p-4 bg-orange-50 text-orange-800 rounded-lg text-sm border border-orange-200">
+                        ⚠️ La redirection automatique a été bloquée. <br />
+                        Veuillez cliquer sur le bouton ci-dessous.
+                    </div>
+                )}
             </div>
 
             <div className="flex flex-col gap-4 w-full max-w-xs">
@@ -52,7 +60,7 @@ export default function AdminCreateRedirect() {
 
                 <Link href="/" className="w-full">
                     <Button variant="ghost" size="sm" fullWidth>
-                        Retour à l'accueil
+                        Retour à l&apos;accueil
                     </Button>
                 </Link>
             </div>

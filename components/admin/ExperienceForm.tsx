@@ -5,7 +5,7 @@ import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { LovePage, TimelineEvent } from '@/lib/types';
 import FileUploader from './FileUploader';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Typography from '@/components/ui/Typography';
@@ -15,12 +15,13 @@ interface ExperienceFormProps {
     initialData?: LovePage;
     onSuccess?: () => void;
     onCancel?: () => void;
+    lockedExperienceType?: 'impossible-to-say-no' | 'timeline';
 }
 
-export default function ExperienceForm({ initialData, onSuccess, onCancel }: ExperienceFormProps) {
+export default function ExperienceForm({ initialData, onSuccess, onCancel, lockedExperienceType }: ExperienceFormProps) {
     const [formData, setFormData] = useState({
         slug: '',
-        experience: 'impossible-to-say-no' as 'impossible-to-say-no' | 'timeline',
+        experience: lockedExperienceType || 'impossible-to-say-no',
         ownerName: '',
         targetName: '',
         question: '',
@@ -102,7 +103,7 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
 
             if (initialData) {
                 // Update existing
-                await updateDoc(doc(db, 'lovePages', initialData.slug), lovePageData as any);
+                await updateDoc(doc(db, 'lovePages', initialData.slug), lovePageData as object);
             } else {
                 // Create new
                 await setDoc(doc(db, 'lovePages', slug), lovePageData);
@@ -145,7 +146,7 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
 
                 <div className="space-y-2">
                     <Typography variant="h2" className="text-3xl text-stone-900">Magie opérée !</Typography>
-                    <Typography variant="body" className="text-stone-500">Votre page d'amour est prête à être partagée.</Typography>
+                    <Typography variant="body" className="text-stone-500">Votre page d&apos;amour est prête à être partagée.</Typography>
                 </div>
 
                 <Card variant="solid" padding="md" className="w-full max-w-lg bg-stone-50 border-stone-200">
@@ -197,7 +198,7 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
                         <span className="text-xl">✏️</span>
                         <div>
                             <Typography variant="h3" className="text-sm font-bold text-blue-900">Mode Édition</Typography>
-                            <Typography variant="body" className="text-xs text-blue-600">Vous modifiez l'histoire de {initialData.ownerName} & {initialData.targetName}</Typography>
+                            <Typography variant="body" className="text-xs text-blue-600">Vous modifiez l&apos;histoire de {initialData.ownerName} & {initialData.targetName}</Typography>
                         </div>
                     </div>
                     {onCancel && (
@@ -235,35 +236,39 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
 
             {/* Section 2: Quoi ? */}
             <div className="space-y-6">
-                <Typography variant="h3" className="text-lg font-medium text-stone-800 border-b border-stone-100 pb-2">
-                    L'Expérience
-                </Typography>
+                {!lockedExperienceType && (
+                    <Typography variant="h3" className="text-lg font-medium text-stone-800 border-b border-stone-100 pb-2">
+                        L&apos;Expérience
+                    </Typography>
+                )}
 
                 <div className="grid grid-cols-1 gap-6">
-                    <div className="space-y-2">
-                        <label className="text-xs font-bold tracking-widest uppercase text-stone-500 pl-1">Type d'expérience</label>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {['impossible-to-say-no', 'timeline'].map((type) => (
-                                <div
-                                    key={type}
-                                    onClick={() => setFormData({ ...formData, experience: type as any })}
-                                    className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 ${formData.experience === type
-                                        ? 'bg-passion-50 border-passion-500 ring-1 ring-passion-500 shadow-sm'
-                                        : 'bg-white border-stone-200 hover:border-stone-400'
-                                        }`}
-                                >
-                                    <div className="font-medium text-stone-900 mb-1">
-                                        {type === 'impossible-to-say-no' ? 'Impossible de dire non 💌' : 'Timeline Notre Histoire 🕰️'}
+                    {!lockedExperienceType && (
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold tracking-widest uppercase text-stone-500 pl-1">Type d&apos;expérience</label>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {['impossible-to-say-no', 'timeline'].map((type) => (
+                                    <div
+                                        key={type}
+                                        onClick={() => setFormData({ ...formData, experience: type as "impossible-to-say-no" | "timeline" })}
+                                        className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 ${formData.experience === type
+                                            ? 'bg-passion-50 border-passion-500 ring-1 ring-passion-500 shadow-sm'
+                                            : 'bg-white border-stone-200 hover:border-stone-400'
+                                            }`}
+                                    >
+                                        <div className="font-medium text-stone-900 mb-1">
+                                            {type === 'impossible-to-say-no' ? 'Impossible de dire non 💌' : 'Timeline Notre Histoire 🕰️'}
+                                        </div>
+                                        <div className="text-xs text-stone-500 leading-relaxed">
+                                            {type === 'impossible-to-say-no'
+                                                ? 'Une question interactive avec un "Non" fuyant.'
+                                                : 'Une chronologie multimédia de vos moments forts.'}
+                                        </div>
                                     </div>
-                                    <div className="text-xs text-stone-500 leading-relaxed">
-                                        {type === 'impossible-to-say-no'
-                                            ? 'Une question interactive avec un "Non" fuyant.'
-                                            : 'Une chronologie multimédia de vos moments forts.'}
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     <div className="space-y-2">
                         <label className="text-xs font-bold tracking-widest uppercase text-stone-500 pl-1">URL Personnalisée (Slug)</label>
@@ -278,7 +283,7 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
                                 disabled={!!initialData}
                             />
                         </div>
-                        {initialData && <p className="text-[10px] text-stone-400 pl-1">L'URL ne peut pas être modifiée une fois créée.</p>}
+                        {initialData && <p className="text-[10px] text-stone-400 pl-1">L&apos;URL ne peut pas être modifiée une fois créée.</p>}
                     </div>
                 </div>
             </div>
@@ -290,16 +295,19 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
                 </Typography>
 
                 {formData.experience === 'impossible-to-say-no' && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-                        <Input
-                            label="La Question Fatidique"
-                            value={formData.question}
-                            onChange={(e) => setFormData({ ...formData, question: e.target.value })}
-                            required
-                            placeholder="Veux-tu être ma Valentine ?"
-                            className="bg-white text-lg"
-                        />
-                    </motion.div>
+                    <div className="space-y-6">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-neutral-700 mb-2 block">La Question Fatidique</label>
+                            <textarea
+                                value={formData.question}
+                                onChange={(e) => setFormData({ ...formData, question: e.target.value })}
+                                required
+                                placeholder="Veux-tu être ma Valentine ?"
+                                className="w-full px-4 py-3 bg-white border border-stone-200 rounded-xl focus:ring-2 focus:ring-passion-500/20 focus:border-passion-500 outline-none transition-all text-lg"
+                                rows={3}
+                            />
+                        </div>
+                    </div>
                 )}
 
                 {formData.experience === 'timeline' && (
@@ -418,7 +426,7 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel }: Exp
                         required
                     />
                     <p className="text-[10px] text-stone-400 mt-1 pl-1">
-                        Astuce : Écrivez naturellement, les apostrophes ( ' ) sont supportées ! <br />
+                        Astuce : Écrivez naturellement, les apostrophes ( &apos; ) sont supportées ! <br />
                         Utilisez <code>[triste-&gt;heureux]</code> pour l&apos;effet de correction automatique.
                     </p>
                 </div>

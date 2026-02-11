@@ -32,6 +32,7 @@ const PinnedPhoto = ({ src, visible }: { src: string, visible: boolean }) => {
             className="absolute -top-12 -right-6 md:-right-12 w-32 h-32 md:w-48 md:h-48 z-20 pointer-events-none"
         >
             <div className="relative w-full h-full bg-white p-2 shadow-xl transform origin-bottom-left rotate-2 border border-stone-100/50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src={src}
                     alt="Souvenir"
@@ -69,7 +70,8 @@ const StorySegment = memo(({
 
     useEffect(() => {
         if (isActive && phase === 'hidden') {
-            setPhase('date');
+            // Timer for phase change
+            const timer = setTimeout(() => setPhase('date'), 0);
 
             // Double requestAnimationFrame ensures Framer Motion layout is stable
             requestAnimationFrame(() => {
@@ -77,6 +79,8 @@ const StorySegment = memo(({
                     scrollToCenter(scrollRef.current);
                 });
             });
+
+            return () => clearTimeout(timer);
         }
     }, [isActive, phase]);
 
@@ -351,7 +355,7 @@ export default function LiveStory({ lovePage }: { lovePage: LovePage }) {
 
                             <Link href="/demo/impossible-to-say-no" className="block">
                                 <button className="px-6 py-2 bg-white border border-rose-200 text-rose-900/60 hover:text-rose-900 font-serif italic text-sm rounded-full hover:bg-rose-50 transition-all duration-300">
-                                    Faire une demande qu'on ne peut (vraiment) pas refuser 💍
+                                    Faire une demande qu&apos;on ne peut (vraiment) pas refuser 💍
                                 </button>
                             </Link>
                         </div>

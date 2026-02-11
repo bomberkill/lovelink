@@ -13,7 +13,7 @@ import { LovePage } from '@/lib/types';
 
 // 🔒 SÉCURITÉ : Email(s) autorisé(s) via variable d'environnement
 // Supporte plusieurs emails séparés par une virgule
-const ALLOWED_EMAILS = (process.env.NEXT_PUBLIC_EMAIL_ADDRESS || '').split(',').map(email => email.trim());
+const ALLOWED_EMAILS = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(email => email.trim());
 
 export default function AdminDashboardPage() {
     const [user, setUser] = useState<User | null>(null);
@@ -56,9 +56,9 @@ export default function AdminDashboardPage() {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
-        } catch (error: any) {
-            console.error('Login error:', error);
-            setAuthError('Erreur de connexion Google.');
+        } catch (error: unknown) {
+            console.error("Login failed", error);
+            setAuthError("Connexion échouée. Vérifiez que votre email est autorisé.");
         }
     };
 

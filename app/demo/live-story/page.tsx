@@ -28,10 +28,9 @@ export default async function DemoLiveStoryPage({ searchParams }: { searchParams
         selectedStory = DEMO_stories.find(s => s.slug === story);
     }
 
-    // If no story found or no param, pick random
+    // If no story found or no param, default to the first one (Deterministic)
     if (!selectedStory) {
-        const randomIndex = Math.floor(Math.random() * DEMO_stories.length);
-        selectedStory = DEMO_stories[randomIndex];
+        selectedStory = DEMO_stories[0];
     }
 
     return <LiveStoryWrapper lovePage={selectedStory} />;

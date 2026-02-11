@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD4eGmm102BZTcB7b7_sX7LqbzRyzADB-0",
-  authDomain: "portfolio-237aa.firebaseapp.com",
-  projectId: "portfolio-237aa",
-  storageBucket: "nobisoft-nextjs-website.appspot.com",
-  messagingSenderId: "10697683869",
-  appId: "1:10697683869:web:28889247a9dbe48ac8b574"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "mock_key",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "mock_domain",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "mock_project_id",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "mock_bucket",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "mock_sender_id",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "mock_app_id"
 };
 
 // Initialize Firebase

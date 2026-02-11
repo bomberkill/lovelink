@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 interface UseLiveTypewriterOptions {
     speed?: number; // Base speed in ms per char (slower is better for emotion, e.g. 70-90)
@@ -75,10 +75,12 @@ export function useLiveTypewriter(rawText: string, {
     useEffect(() => {
         if (!enabled) {
             // If disabled, reset or keep empty
-            setDisplayedText('');
-            setIsTyping(false);
-            setIsComplete(false);
-            return;
+            const timer = setTimeout(() => {
+                setDisplayedText(prev => prev === '' ? prev : '');
+                setIsTyping(prev => prev === false ? prev : false);
+                setIsComplete(prev => prev === false ? prev : false);
+            }, 0);
+            return () => clearTimeout(timer);
         }
 
         if (!rawText) return;

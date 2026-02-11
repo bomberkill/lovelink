@@ -77,7 +77,7 @@ export default function CreateExamplesPage() {
 
                     <div className="text-sm text-gray-600 space-y-1 pt-4 border-t">
                         <p><strong>Note:</strong> Cette page est temporaire pour créer des exemples de test.</p>
-                        <p className="text-xs text-gray-500">Les règles Firestore doivent autoriser l'écriture pour que cela fonctionne.</p>
+                        <p className="text-xs text-gray-500">Les règles Firestore doivent autoriser l&apos;écriture pour que cela fonctionne.</p>
                     </div>
                 </div>
             </div>
