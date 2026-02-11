@@ -65,7 +65,7 @@ export default function HomePage() {
               <Typography variant="h2">Nos Expériences</Typography>
             </div>
             <Typography variant="body" className="max-w-md text-center md:text-right">
-              Des templates conçus comme des châteaux de cartes numériques. Choisissez l'écrin de votre message.
+              Des templates conçus comme des châteaux de cartes numériques. Choisissez l&apos;écrin de votre message.
             </Typography>
           </div>
 
@@ -86,7 +86,7 @@ export default function HomePage() {
                       <span className="text-2xl opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 duration-300">→</span>
                     </div>
                     <Typography variant="body">
-                      Une invitation interactive où le refus s'échappe. Idéale pour une demande en mariage ou une Saint-Valentin joueur.
+                      Une invitation interactive où le refus s&apos;échappe. Idéale pour une demande en mariage ou une Saint-Valentin joueur.
                     </Typography>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export default function HomePage() {
                       <span className="text-2xl opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 duration-300">→</span>
                     </div>
                     <Typography variant="body">
-                      Votre histoire s'écrit sous vos yeux. Une narration émotionnelle qui capture vos hésitations et vos moments forts.
+                      Votre histoire s&apos;écrit sous vos yeux. Une narration émotionnelle qui capture vos hésitations et vos moments forts.
                     </Typography>
                   </div>
                 </div>

@@ -36,7 +36,9 @@ export default function Confetti({
             delay: i * 0.05,
             rotation: Math.random() * 360,
         }));
-        setPieces(newPieces);
+
+        const timer = setTimeout(() => setPieces(newPieces), 0);
+        return () => clearTimeout(timer);
     }, [count, emojis, active]);
 
     if (!active) return null;

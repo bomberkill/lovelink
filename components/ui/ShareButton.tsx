@@ -64,8 +64,8 @@ export default function ShareButton({ title, text, url, variant = 'luxury' }: Sh
                 await navigator.clipboard.writeText(url);
                 setJustCopied(true);
                 setTimeout(() => setJustCopied(false), 2000);
-            } catch (err) {
-                fallbackCopyTextToClipboard(url);
+            } catch {
+                console.error('Failed to copy');
             }
         } else {
             fallbackCopyTextToClipboard(url);

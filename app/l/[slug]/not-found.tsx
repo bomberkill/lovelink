@@ -7,7 +7,7 @@ export default function NotFound() {
                     Page introuvable
                 </h1>
                 <p className="text-gray-600 mb-6">
-                    Cette page d'amour n'existe pas ou a été supprimée.
+                    Cette page d&apos;amour n&apos;existe pas ou a été supprimée.
                 </p>
                 <p className="text-sm text-gray-500">
                     Vérifiez le lien que vous avez reçu.

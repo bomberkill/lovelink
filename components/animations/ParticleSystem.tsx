@@ -34,7 +34,9 @@ export default function ParticleSystem({
             duration: 8 + Math.random() * 8,
             delay: Math.random() * 2,
         }));
-        setParticles(newParticles);
+
+        const timer = setTimeout(() => setParticles(newParticles), 0);
+        return () => clearTimeout(timer);
     }, [count, emojis]);
 
     return (

@@ -40,13 +40,11 @@ export default function Typography({
     gradient = false,
     ...props
 }: TypographyProps) {
-
     const Component = as || variantTags[variant] || 'p';
 
     const gradientClass = gradient ? 'bg-clip-text text-transparent bg-gradient-to-br from-passion-900 to-passion-600' : '';
 
     return (
-        // @ts-ignore
         <Component className={`${styles[variant]} ${gradientClass} ${className}`} {...props}>
             {children}
         </Component>

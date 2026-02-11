@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import { useLiveTypewriter } from '@/hooks/useLiveTypewriter';
 import { LovePage } from '@/lib/types';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import Typography, { RevealTypography } from '@/components/ui/Typography';
+import Typography from '@/components/ui/Typography';
 import ParticleSystem from '@/components/animations/ParticleSystem';
 import Confetti from '@/components/animations/Confetti';
 import Link from 'next/link';
@@ -21,6 +22,18 @@ export default function ImpossibleToSayNo({ lovePage }: ImpossibleToSayNoProps) 
     // Animation controls for "No" button
     const controls = useAnimation();
     const containerRef = useRef<HTMLDivElement>(null);
+
+    // Typewriter effects
+    const { displayedText: questionText, cursorVisible: questionCursor } = useLiveTypewriter(lovePage.question || '', {
+        speed: 50,
+        startDelay: 1500, // Wait for TargetName fade in
+    });
+
+    const { displayedText: finalText, cursorVisible: finalCursor } = useLiveTypewriter(lovePage.finalMessage || '', {
+        speed: 40,
+        startDelay: 1000,
+        enabled: showFinalMessage, // Only start when success screen is shown
+    });
 
     // Perpetual gentle movement (breathing effect)
     useEffect(() => {
@@ -78,6 +91,24 @@ export default function ImpossibleToSayNo({ lovePage }: ImpossibleToSayNoProps) 
                 <ParticleSystem count={20} emojis={['✨', '🌸', '🤍', '💖']} />
             </div>
 
+            {/* --- FLOATING CTA --- */}
+            <AnimatePresence>
+                {!showFinalMessage && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        className="fixed bottom-6 right-6 z-50 pointer-events-auto"
+                    >
+                        <Link href="/create/impossible-to-say-no">
+                            <Button variant="magnetic" size="sm" className="bg-white/90 backdrop-blur !text-passion-900 hover:!text-white border-passion-100 shadow-lg hover:shadow-xl font-medium">
+                                Créer le mien 🪄
+                            </Button>
+                        </Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <AnimatePresence mode="wait">
                 {!showFinalMessage ? (
                     <motion.div
@@ -105,7 +136,7 @@ export default function ImpossibleToSayNo({ lovePage }: ImpossibleToSayNoProps) 
                                 </h1>
 
                                 <Typography variant="h3" className="font-light text-stone-700 leading-relaxed italic">
-                                    "{lovePage.question}"
+                                    &quot;{questionText}{questionCursor && <span className="text-passion-400">|</span>}&quot;
                                 </Typography>
                             </motion.div>
 
@@ -144,23 +175,31 @@ export default function ImpossibleToSayNo({ lovePage }: ImpossibleToSayNoProps) 
                     >
                         <Confetti count={50} emojis={['✨', '🤍', '🥂', '💍', '💖']} />
 
-                        <Card variant="deep-glass" padding="xl" className="max-w-3xl w-full text-center space-y-12 border-passion-200 shadow-glass bg-white/70">
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1, delay: 0.2 }}
-                                className="space-y-8"
-                            >
+                        <Card
+                            variant="deep-glass"
+                            padding="xl"
+                            className="max-w-3xl w-full text-center space-y-12 border-passion-200 shadow-glass bg-white/70"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            whileInView={{}}
+                            viewport={{}}
+                        >
+                            <div className="space-y-8">
                                 <div className="text-7xl animate-pulse-subtle">🥂</div>
 
-                                <RevealTypography variant="display-hero" delay={0.4} className="text-passion-900 drop-shadow-sm">
+                                <motion.h1
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.4, duration: 0.8 }}
+                                    className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight font-light text-passion-900 drop-shadow-sm text-center mx-auto"
+                                >
                                     Merveilleux !
-                                </RevealTypography>
+                                </motion.h1>
 
                                 <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-passion-300 to-transparent mx-auto" />
 
                                 <Typography variant="body-lg" className="max-w-xl mx-auto italic text-stone-700 font-medium">
-                                    {lovePage.finalMessage}
+                                    {finalText}{finalCursor && <span className="text-passion-400">|</span>}
                                 </Typography>
 
                                 <div className="pt-12">
@@ -171,18 +210,25 @@ export default function ImpossibleToSayNo({ lovePage }: ImpossibleToSayNoProps) 
                                         {lovePage.ownerName}
                                     </Typography>
 
-                                    <div className="pt-16 mt-8 border-t border-dashed border-passion-200/50 max-w-sm mx-auto">
-                                        <Typography variant="body" className="text-stone-400 text-xs mb-4 italic">
-                                            Envie de plus d'émotion ?
+                                    <div className="pt-16 mt-8 border-t border-dashed border-passion-200/50 max-w-sm mx-auto space-y-4">
+                                        <Typography variant="body" className="text-stone-400 text-xs italic">
+                                            À votre tour de jouer ?
                                         </Typography>
-                                        <Link href="/demo/live-story">
-                                            <Button variant="ghost" size="sm" className="text-passion-800/60 hover:text-passion-900 hover:bg-passion-50/50">
-                                                Vivre l'émotion d'une histoire en direct ✨
+
+                                        <Link href="/create/impossible-to-say-no" className="block w-full">
+                                            <Button variant="luxury" size="lg" fullWidth className="shadow-passion-500/30">
+                                                Créer ma page gratuitement ✨
+                                            </Button>
+                                        </Link>
+
+                                        <Link href="/demo/live-story" className="block w-full">
+                                            <Button variant="ghost" size="sm" className="text-stone-500 hover:text-passion-900">
+                                                Voir aussi : Live Story 📖
                                             </Button>
                                         </Link>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         </Card>
                     </motion.div>
                 )}

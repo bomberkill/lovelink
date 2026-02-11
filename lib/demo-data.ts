@@ -2,21 +2,20 @@ import { LovePage } from './types';
 
 // --- CURATED ASSETS (5-6 Images, 3 Music Tracks) ---
 
-// 3 Curated Melancholic/Romantic Piano Tracks (Direct MP3s)
+// 1 Curated Local Track (Lightweight)
 const SHARED_MUSIC = [
-    'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_04_-_Sentinel.mp3', // Melancholic / Atmospheric
-    'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_09_-_Homeroad.mp3', // Soft / Hopeful
-    'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Chapter_One__Cold/Kai_Engel_-_08_-_Daemones.mp3' // Deep / Emotional
+    '/romantic-piano.wav',
 ];
 
 // 6 Curated High-Quality Images (Mood: Moody, Romantic, Soft)
 const SHARED_IMAGES = [
+    'https://images.unsplash.com/photo-1561442456-fca930364be4?q=80&w=436&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1557206843-1cf213a7a608?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNhZCUyMHJvbWFuY2V8ZW58MHx8MHx8fDA%3D',
+    'https://images.unsplash.com/photo-1601241682289-b7cf561b0f36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNhZCUyMHJvbWFuY2V8ZW58MHx8MHx8fDA%3D',
     'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?q=80&w=2500&auto=format&fit=crop', // Hands holding (Warm/Light)
-    'https://images.unsplash.com/photo-1583336130561-1d9e25cc22b2?q=80&w=2500&auto=format&fit=crop', // Silhouette sunset (Deep/Orange)
-    'https://images.unsplash.com/photo-1616091216791-a5360b5fc78a?q=80&w=2500&auto=format&fit=crop', // Rainy window / Mood (Blue/Grey)
-    'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=2500&auto=format&fit=crop', // Couple walking away (Back view)
-    'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=2574&auto=format&fit=crop', // Abstract lights / Bokeh (Dreamy)
-    'https://images.unsplash.com/photo-1501901609772-df0848060b33?q=80&w=2500&auto=format&fit=crop'  // Book/Coffee/Cozy (Intimate)
+    'https://images.unsplash.com/photo-1483135504826-f60ad6c7924e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2FkJTIwbG92ZXxlbnwwfHwwfHx8MA%3D%3D',
+    'https://plus.unsplash.com/premium_photo-1732668021356-ef63e3815996?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFsb25lJTIwY2l0eSUyMG5pZ2h0fGVufDB8fDB8fHww',// Couple walking away (Back view)
+    'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=2574&auto=format&fit=crop', // Book/Coffee/Cozy (Intimate)
 ];
 
 // Helper to get consistent random assets based on slug length (pseudo-random)
@@ -29,456 +28,218 @@ const getAsset = (slug: string, index: number, type: 'music' | 'image') => {
 };
 
 export const DEMO_stories: LovePage[] = [
-    // --- ORIGINAL 3 STORIES (Updated with new assets) ---
     {
-        slug: 'demo-reconciliation',
+        slug: 'demo-suffocated-love',
+        experience: 'timeline',
+        ownerName: 'Anonyme',
+        targetName: 'Alice',
+        musicUrl: getAsset('demo-suffocated-love', 0, 'music'),
+        finalMessage: "T'aimer n'était pas t'étouffer. Je l'ai compris trop tard.",
+        timelineEvents: [
+            {
+                date: 'Début',
+                title: 'Quand tout a commencé',
+                description: `Je pensais que passer tout mon temps avec toi était une preuve d’amour. Quand tu me disais : “Je vais sortir avec les filles ce soir”, je répondais : “Ok.” Je souriais même.`,
+                photoUrl: getAsset('demo-suffocated-love', 0, 'image')
+            },
+            {
+                date: 'Plus tard',
+                title: 'L’inquiétude silencieuse',
+                description: `Puis je restais éveillé un peu plus longtemps que prévu. Je regardais l’heure. Je regardais si tu étais “en ligne”. Je posais mon téléphone. Je le reprenais. Je ne te faisais pas de scène. Je devenais simplement plus silencieux le lendemain.`,
+                photoUrl: getAsset('demo-suffocated-love', 1, 'image')
+            },
+            {
+                date: 'Un soir',
+                title: 'Les petites fissures',
+                description: `Tu me demandais : “Qu’est-ce qu’il y a ?” Et je disais : “Rien.” Mais il y avait quelque chose. Ce n’était pas de la jalousie violente. C’était plus discret que ça. Une sensation étrange quand j’imaginais que tu pouvais rire sans moi.`,
+                photoUrl: getAsset('demo-suffocated-love', 2, 'image')
+            },
+            {
+                date: 'Révélation',
+                title: 'Apprendre à aimer différemment',
+                description: `Je croyais que si on s’aimait vraiment, on devait toujours vouloir être ensemble. Je ne comprenais pas encore qu’aimer quelqu’un ce n’est pas avoir besoin qu’il soit dépendant. Alors j’ai commencé à poser des questions qui ressemblaient à de l’inquiétude. À faire des remarques qui ressemblaient à de l’humour. Rien de grave. Juste assez pour que tu te sentes un peu coupable d’être libre. Le jour où tu m’as dit : “Je t’aime, mais je respire moins”, j’ai senti quelque chose se fissurer. Pas entre nous. En moi. Je voulais être ton refuge. Je suis devenu ta limite. Aujourd’hui je comprends que l’amour n’étouffe pas. Ce sont les peurs qu’on cache dedans. Et la mienne était simple : si tu pouvais être heureuse sans moi, alors peut-être que je n’étais pas indispensable.`,
+                photoUrl: getAsset('demo-suffocated-love', 3, 'image')
+            }
+        ],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+    },
+    {
+        slug: 'demo-chased-success',
         experience: 'timeline',
         ownerName: 'Thomas',
         targetName: 'Sarah',
-        musicUrl: getAsset('demo-reconciliation', 0, 'music'),
-        finalMessage: "Je ne veux plus perdre une seconde sans toi. Recommençons tout ?",
+        musicUrl: getAsset('demo-chased-success', 1, 'music'),
+        finalMessage: "Le succès ne remplit les silences que si on a quelqu'un pour le célébrer.",
         timelineEvents: [
             {
-                date: 'Juillet 2023',
-                title: 'Notre rupture',
-                description: 'Le silence s\'est installé. J\'ai cru que c\'était la fin, mais chaque jour sans toi me prouvait le contraire.',
-                photoUrl: getAsset('demo-reconciliation', 1, 'image')
+                date: 'Début',
+                title: 'Quand je courais après nous… et après moi',
+                description: `Tu disais que tu étais fière de moi. Quand je travaillais tard. Quand j’annulais un dîner pour “un truc important”. Quand je répondais à mes mails pendant qu’on était ensemble. Tu disais que tu comprenais. Moi, je me répétais que c’était temporaire. Que c’était pour nous. Que plus tard, je serai plus présent. Je ne voyais pas que “plus tard” devenait un endroit où je te rangeais.`,
+                photoUrl: getAsset('demo-chased-success', 4, 'image')
             },
             {
-                date: 'Octobre 2023',
-                title: 'L\'absence',
-                description: 'J\'ai croisé ton parfum dans le métro. J\'ai failli t\'écrire dix fois ce jour-là. "Tu me manques" restait bloqué dans mes brouillons.',
-                photoUrl: getAsset('demo-reconciliation', 2, 'image')
+                date: 'Un soir',
+                title: 'Le poids des petites attentions',
+                description: `Un soir, tu avais préparé quelque chose. Rien d’extraordinaire. Juste un moment à deux. Je suis arrivé en retard. Encore. Tu n’as pas crié. Tu as juste dit : “J’aimerais parfois passer avant tes projets.” Je me suis défendu. J’ai parlé d’ambition. D’avenir. De sacrifices nécessaires.`,
+                photoUrl: getAsset('demo-chased-success', 1, 'image')
             },
             {
-                date: 'Aujourd\'hui',
-                title: 'Une évidence',
-                description: 'Je ne peux pas effacer nos erreurs, mais je peux te promettre de ne plus jamais te lâcher la main.',
-                photoUrl: getAsset('demo-reconciliation', 3, 'image')
+                date: 'Prise de conscience',
+                title: 'Comprendre ce que j’ai négligé',
+                description: `Mais au fond, je crois que j’avais peur. Peur de ne rien devenir. Peur que sans réussite, je ne sois pas assez. Alors je me suis rendu indispensable ailleurs. Et j’ai supposé que toi, tu resterais.`,
+                photoUrl: getAsset('demo-chased-success', 5, 'image')
+            },
+            {
+                date: 'Aujourd’hui',
+                title: 'L’amour réel vs les priorités',
+                description: `Je t’aimais. Mais je t’ai aimée comme une certitude, pas comme une priorité. Aujourd’hui je sais qu’on ne construit pas un futur solide en négligeant le présent fragile.`,
+                photoUrl: getAsset('demo-chased-success', 6, 'image')
             }
         ],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     },
     {
-        slug: 'demo-rencontre',
+        slug: 'demo-left-to-discover',
         experience: 'timeline',
-        ownerName: 'Léo',
-        targetName: 'Clara',
-        musicUrl: getAsset('demo-rencontre', 0, 'music'),
-        finalMessage: "Depuis ce café, je n'ai jamais arrêté de penser à toi.",
+        ownerName: 'Clara',
+        targetName: 'Julien',
+        musicUrl: getAsset('demo-left-to-discover', 2, 'music'),
+        finalMessage: "Il fallait qu'on se perde pour que je puisse enfin me trouver.",
         timelineEvents: [
             {
-                date: '14 Février',
-                title: 'Le Café de Flore',
-                description: 'Il pleuvait. Tu as renversé ton parapluie, j\'ai renversé mon café. Le début du chaos, le début de nous.',
-                photoUrl: getAsset('demo-rencontre', 1, 'image')
+                date: 'Le départ',
+                title: 'Quand tu as choisi de partir',
+                description: `Quand tu m’as dit que tu avais besoin de vivre, j’ai entendu que je n’étais plus suffisante. Je n’ai pas pleuré devant toi. J’ai hoché la tête. J’ai dit que je comprenais.`,
+                photoUrl: getAsset('demo-left-to-discover', 0, 'image')
             },
             {
-                date: '20 Février',
-                title: 'Premier message',
-                description: 'J\'ai mis 3 heures à écrire "C\'était sympa le café nettoyé". Tu as répondu en 3 secondes.',
-                photoUrl: getAsset('demo-rencontre', 2, 'image')
+                date: 'Seule',
+                title: 'Regarder ce qui était à nous',
+                description: `Puis je suis rentrée chez moi et j’ai regardé nos photos comme si elles appartenaient déjà à quelqu’un d’autre. Je me suis comparée. À celles qui semblaient plus libres. Plus légères. Moins attachées.`,
+                photoUrl: getAsset('demo-left-to-discover', 1, 'image')
             },
             {
-                date: 'Mars',
-                title: 'Premier baiser',
-                description: 'Sous ce porche, rue de Rivoli. Le monde s\'est arrêté de tourner exactement à 23h42.',
-                photoUrl: getAsset('demo-rencontre', 3, 'image')
+                date: 'Réflexion',
+                title: 'Comprendre sans rancune',
+                description: `Je me suis demandé si j’avais été trop stable. Trop présente. Trop “acquise”. Je ne comprenais pas comment on pouvait aimer et vouloir partir en même temps. Avec le temps, j’ai compris quelque chose de moins violent : tu n’étais pas contre moi. Tu étais contre l’idée de te figer trop tôt.`,
+                photoUrl: getAsset('demo-left-to-discover', 2, 'image')
+            },
+            {
+                date: 'Aujourd’hui',
+                title: 'Exister seule',
+                description: `Moi, je m’étais construite autour de nous. Toi, tu voulais encore te construire tout court. Ça a fait mal. Mais j’ai découvert que je pouvais exister seule.`,
+                photoUrl: getAsset('demo-left-to-discover', 3, 'image')
             }
         ],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     },
     {
-        slug: 'demo-distance',
+        slug: 'demo-never-assumed',
         experience: 'timeline',
-        ownerName: 'Marc',
-        targetName: 'Hélène',
-        musicUrl: getAsset('demo-distance', 0, 'music'),
-        finalMessage: "La distance n'est rien quand quelqu'un compte autant.",
+        ownerName: 'Anonyme',
+        targetName: 'Sophie',
+        musicUrl: getAsset('demo-never-assumed', 3, 'music'),
+        finalMessage: "L'amour ne se cache pas. Soit on le vit, soit on le perd.",
         timelineEvents: [
             {
-                date: 'L\'Aéroport',
-                title: 'Le départ',
-                description: 'Te voir passer la sécurité a été la chose la plus dure de ma vie. 6000 km, c\'est loin, mais mon cœur est parti avec toi.',
-                photoUrl: getAsset('demo-distance', 1, 'image')
+                date: 'Au début',
+                title: 'L’amour discret',
+                description: `Je disais que je n’aimais pas exposer ma vie. Que les réseaux, ce n’était pas important. Que l’amour n’avait pas besoin d’être affiché. C’était presque crédible.`,
+                photoUrl: getAsset('demo-never-assumed', 4, 'image')
             },
             {
-                date: '6 mois plus tard',
-                title: 'Les Facetimes',
-                description: 'Dormir avec l\'écran allumé juste pour t\'entendre respirer. On a créé notre propre monde à travers ces pixels.',
-                photoUrl: getAsset('demo-distance', 2, 'image')
+                date: 'La peur',
+                title: 'Quand aimer devient silence',
+                description: `Mais la vérité, c’est que j’avais peur. Peur des remarques. Peur qu’on me dise que je pouvais “mieux faire”. Peur que mes amis ne comprennent pas. Alors je t’aimais discrètement. Trop discrètement.`,
+                photoUrl: getAsset('demo-never-assumed', 1, 'image')
             },
             {
-                date: 'J-7',
-                title: 'Le compte à rebours',
-                description: 'Plus qu\'une semaine. Prépare-toi, car je ne compte plus jamais te laisser repartir.',
-                photoUrl: getAsset('demo-distance', 3, 'image')
+                date: 'Les apparences',
+                title: 'Changer juste assez',
+                description: `Quand on croisait quelqu’un que je connaissais, je changeais légèrement d’attitude. Rien d’évident. Juste assez pour que tu le sentes. Tu ne demandais pas des photos. Tu demandais de la clarté.`,
+                photoUrl: getAsset('demo-never-assumed', 5, 'image')
+            },
+            {
+                date: 'La prise de conscience',
+                title: 'Le jour où tu as parlé',
+                description: `Le jour où tu m’as dit : “Je ne veux pas être une partie cachée de ta vie”, j’ai compris que le silence peut ressembler à de la honte.`,
+                photoUrl: getAsset('demo-never-assumed', 6, 'image')
             }
         ],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     },
-
-    // --- NEW REALISTIC/COMPLEX STORIES (User added) ---
-
     {
-        slug: 'demo-dark-immature-love',
+        slug: 'demo-almost-lost',
         experience: 'timeline',
-        ownerName: 'Nicolas',
-        targetName: 'Clara',
-        musicUrl: getAsset('demo-dark-immature-love', 0, 'music'),
-        finalMessage: 'Tu méritais un homme, pas un garçon perdu.',
-        timelineEvents: [
-            {
-                date: 'Quand tu es arrivée',
-                title: 'T’aimer sans savoir comment',
-                description: 'Je voulais l’amour sans les responsabilités.',
-                photoUrl: getAsset('demo-dark-immature-love', 1, 'image')
-            },
-            {
-                date: 'Les erreurs',
-                title: 'Te blesser sans m’en rendre compte',
-                description: 'Je fuyais dès que ça devenait sérieux.',
-                photoUrl: getAsset('demo-dark-immature-love', 2, 'image')
-            },
-            {
-                date: 'La fin',
-                title: 'Te voir partir sans te retenir',
-                description: 'Je savais que tu avais raison.',
-                photoUrl: getAsset('demo-dark-immature-love', 3, 'image')
-            },
-            {
-                date: 'Maintenant',
-                title: 'Grandir trop tard',
-                description: 'Mais grandir quand même.',
-                photoUrl: getAsset('demo-dark-immature-love', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-dark-doubt',
-        experience: 'timeline',
-        ownerName: 'Romain',
-        targetName: 'Sofia',
-        musicUrl: getAsset('demo-dark-doubt', 0, 'music'),
-        finalMessage: 'Je t’ai aimée avec méfiance. J’aurais dû t’aimer avec confiance.',
+        ownerName: 'Lucas',
+        targetName: 'Emma',
+        musicUrl: getAsset('demo-almost-lost', 4, 'music'),
+        finalMessage: "Il n'y a pas de filtre plus beau que la réalité de tes yeux.",
         timelineEvents: [
             {
                 date: 'Au début',
-                title: 'Te vouloir rien qu’à moi',
-                description: 'Je croyais que l’amour excluait le reste du monde.',
-                photoUrl: getAsset('demo-dark-doubt', 1, 'image')
+                title: 'Notre quotidien',
+                description: `On allait bien. On riait. On parlait de tout. On n’avait pas grand-chose, mais on était tranquilles.`,
+                photoUrl: getAsset('demo-almost-lost', 0, 'image')
             },
             {
-                date: 'Les soupçons',
-                title: 'Quand le doute a remplacé l’amour',
-                description: 'Chaque retard devenait une accusation.',
-                photoUrl: getAsset('demo-dark-doubt', 2, 'image')
+                date: 'La distraction',
+                title: 'Regarder ailleurs',
+                description: `Puis j’ai commencé à regarder ailleurs. Pas vers quelqu’un. Vers des images. Des couples parfaits. Des surprises filmées. Des voyages spontanés. Notre quotidien a commencé à me sembler ordinaire.`,
+                photoUrl: getAsset('demo-almost-lost', 1, 'image')
             },
             {
-                date: 'La rupture',
-                title: 'Te perdre à force de t’interroger',
-                description: 'Tu as choisi la paix.',
-                photoUrl: getAsset('demo-dark-doubt', 3, 'image')
+                date: 'La confrontation',
+                title: 'Question directe',
+                description: `Un soir, tu m’as demandé : “Pourquoi tu as l’air ailleurs ces derniers temps ?” Je n’ai pas su répondre. Parce que comment expliquer qu’on peut être insatisfait d’une réalité sincère à cause d’illusions bien montées ?`,
+                photoUrl: getAsset('demo-almost-lost', 2, 'image')
             },
             {
-                date: 'Aujourd’hui',
-                title: 'Apprendre à faire confiance',
-                description: 'Même quand tu n’es plus là.',
-                photoUrl: getAsset('demo-dark-doubt', 4, 'image')
-            },
+                date: 'La leçon',
+                title: 'L’amour réel',
+                description: `J’ai failli te faire porter le poids d’une comparaison injuste. Ce que je n’avais pas compris, c’est que l’amour réel ne performe pas. Il ne cherche pas l’applaudissement. Il vit dans des gestes simples qu’aucune caméra ne trouve intéressants. Et c’est peut-être pour ça qu’il est vrai.`,
+                photoUrl: getAsset('demo-almost-lost', 3, 'image')
+            }
         ],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     },
     {
-        slug: 'demo-love-toxic-rebirth',
+        slug: 'demo-silent-treatment',
         experience: 'timeline',
-        ownerName: 'Élise',
-        targetName: 'Mathieu',
-        musicUrl: getAsset('demo-love-toxic-rebirth', 0, 'music'),
-        finalMessage: 'On s’est fait du mal, mais l’amour a été plus [fort->grand] que nos erreurs. Je te choisis encore. Toujours.',
-        timelineEvents: [
-            {
-                date: 'Au début',
-                title: 'L’amour [brûlant->dévorant]',
-                description: 'On s’aimait trop fort. Trop vite. Tu étais mon [refuge->obsession]. Je ne respirais plus sans toi, et ça me semblait normal.',
-                photoUrl: getAsset('demo-love-toxic-rebirth', 1, 'image')
-            },
-            {
-                date: 'Puis',
-                title: 'Quand aimer faisait [mal->peur]',
-                description: 'Les mots sont devenus des armes. Les silences, des punitions. Je me perdais, mais je restais. Parce que t’aimer était plus fort que me [respecter->sauver].',
-                photoUrl: getAsset('demo-love-toxic-rebirth', 2, 'image')
-            },
-            {
-                date: 'La rupture',
-                title: 'Partir pour ne pas [mourir->disparaître]',
-                description: 'Je suis partie en pleurant, convaincue que c’était la fin. J’ai appris à vivre sans toi, le cœur encore accroché.',
-                photoUrl: getAsset('demo-love-toxic-rebirth', 3, 'image')
-            },
-            {
-                date: 'Aujourd’hui',
-                title: 'S’aimer [mieux->autrement]',
-                description: 'On s’est retrouvés différents. Plus calmes. Plus vrais. Cette fois, on s’aime sans se détruire.',
-                photoUrl: getAsset('demo-love-toxic-rebirth', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-forgive-impossible',
-        experience: 'timeline',
-        ownerName: 'Nina',
-        targetName: 'Lucas',
-        musicUrl: getAsset('demo-forgive-impossible', 0, 'music'),
-        finalMessage: 'Je t’ai pardonné non pas parce que c’était facile… mais parce que je t’aime encore.',
-        timelineEvents: [
-            {
-                date: 'Avant',
-                title: 'La confiance [aveugle->totale]',
-                description: 'Je croyais en toi plus qu’en moi-même. Tu étais mon évidence.',
-                photoUrl: getAsset('demo-forgive-impossible', 1, 'image')
-            },
-            {
-                date: 'Le jour où tout a basculé',
-                title: 'La [trahison->vérité]',
-                description: 'Quand j’ai compris, mon monde s’est effondré. J’ai eu mal comme jamais. J’ai pensé te perdre à jamais.',
-                photoUrl: getAsset('demo-forgive-impossible', 2, 'image')
-            },
-            {
-                date: 'Le silence',
-                title: 'Des nuits sans [toi->réponses]',
-                description: 'Tu t’excusais. Moi je doutais. Chaque message était un combat entre ma colère et mon amour.',
-                photoUrl: getAsset('demo-forgive-impossible', 3, 'image')
-            },
-            {
-                date: 'Le choix',
-                title: 'Pardonner par [amour->force]',
-                description: 'Je n’ai pas oublié. Mais j’ai choisi de te laisser une chance. Parce que ce qu’on a vaut le risque.',
-                photoUrl: getAsset('demo-forgive-impossible', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-emotional-dependence',
-        experience: 'timeline',
-        ownerName: 'Camille',
-        targetName: 'Alex',
-        musicUrl: getAsset('demo-emotional-dependence', 0, 'music'),
-        finalMessage: 'Je t’aime sans me perdre. Et ça change tout.',
-        timelineEvents: [
-            {
-                date: 'Quand tout a commencé',
-                title: 'Tu étais mon [monde->tout]',
-                description: 'Tes messages rythmaient mes journées. Ton absence me faisait paniquer.',
-                photoUrl: getAsset('demo-emotional-dependence', 1, 'image')
-            },
-            {
-                date: 'Avec le temps',
-                title: 'Aimer jusqu’à [s’oublier->disparaître]',
-                description: 'Je vivais pour toi. J’avais peur que tu partes, peur de ne pas être assez.',
-                photoUrl: getAsset('demo-emotional-dependence', 2, 'image')
-            },
-            {
-                date: 'Le déclic',
-                title: 'Me retrouver [sans->avant] toi',
-                description: 'J’ai compris que l’amour ne devait pas faire mal. Que je méritais d’exister aussi.',
-                photoUrl: getAsset('demo-emotional-dependence', 3, 'image')
-            },
-            {
-                date: 'Aujourd’hui',
-                title: 'Aimer sans [chaînes->peur]',
-                description: 'Je t’aime librement. Et c’est encore plus beau.',
-                photoUrl: getAsset('demo-emotional-dependence', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-on-off-love',
-        experience: 'timeline',
-        ownerName: 'Sarah',
-        targetName: 'Yanis',
-        musicUrl: getAsset('demo-on-off-love', 0, 'music'),
-        finalMessage: 'On s’est toujours retrouvés. Comme si nos cœurs refusaient d’abandonner.',
-        timelineEvents: [
-            {
-                date: 'La première fois',
-                title: 'Se quitter pour la [première->énième] fois',
-                description: 'On disait que c’était fini. On n’y croyait jamais vraiment.',
-                photoUrl: getAsset('demo-on-off-love', 1, 'image')
-            },
-            {
-                date: 'Les retours',
-                title: 'Toujours revenir [l’un->l’une] vers l’autre',
-                description: 'Chaque rupture nous brisait un peu plus… mais nous rapprochait aussi.',
-                photoUrl: getAsset('demo-on-off-love', 2, 'image')
-            },
-            {
-                date: 'Le ras-le-bol',
-                title: 'Soit on s’aime, soit on [arrête->souffre]',
-                description: 'Cette fois, on a décidé de se battre. Pour de vrai.',
-                photoUrl: getAsset('demo-on-off-love', 3, 'image')
-            },
-            {
-                date: 'Maintenant',
-                title: 'Enfin [stables->ensemble]',
-                description: 'On a choisi l’amour mature, pas l’amour qui fait mal.',
-                photoUrl: getAsset('demo-on-off-love', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-unconditional-love',
-        experience: 'timeline',
-        ownerName: 'Lina',
-        targetName: 'Hugo',
-        musicUrl: getAsset('demo-unconditional-love', 0, 'music'),
-        finalMessage: 'Je connais tes défauts, tes peurs, tes failles… et je t’aime quand même.',
-        timelineEvents: [
-            {
-                date: 'Au début',
-                title: 'Tomber amoureuse de tes [lumières->ombres]',
-                description: 'Tu n’étais pas parfait. Moi non plus. Mais quelque chose était évident.',
-                photoUrl: getAsset('demo-unconditional-love', 1, 'image')
-            },
-            {
-                date: 'Les tempêtes',
-                title: 'Quand l’amour est [mis->mis à] l’épreuve',
-                description: 'La vie nous a frappés fort. On a douté. On a pleuré.',
-                photoUrl: getAsset('demo-unconditional-love', 2, 'image')
-            },
-            {
-                date: 'Le choix',
-                title: 'Rester par [amour->conviction]',
-                description: 'Ce n’était plus une question de facilité, mais de cœur.',
-                photoUrl: getAsset('demo-unconditional-love', 3, 'image')
-            },
-            {
-                date: 'Aujourd’hui',
-                title: 'Encore [là->ensemble]',
-                description: 'Et malgré tout, je te choisis.',
-                photoUrl: getAsset('demo-unconditional-love', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-dark-prison-love',
-        experience: 'timeline',
-        ownerName: 'Adrien',
+        ownerName: 'Anonyme',
         targetName: 'Léa',
-        musicUrl: getAsset('demo-dark-prison-love', 0, 'music'),
-        finalMessage: 'Je t’ai enfermée par peur de te perdre. Aujourd’hui, je t’aime assez pour t’ouvrir la porte.',
+        musicUrl: getAsset('demo-silent-treatment', 5, 'music'),
+        finalMessage: "Mon silence t'a blessé plus que n'importe quelle parole. Désolé.",
         timelineEvents: [
             {
-                date: 'Au début',
-                title: 'Tu étais mon [calme->monde]',
-                description: 'Quand tu étais là, tout allait bien. J’avais besoin de toi pour me sentir entier. Je ne voyais pas encore que je te faisais porter un poids qui n’était pas le tien.',
-                photoUrl: getAsset('demo-dark-prison-love', 1, 'image')
+                date: 'Le début',
+                title: 'Quand le silence est devenu [léger->pesant]',
+                description: `Tu me demandais ce qui n’allait pas. Je répondais : “Rien.” Je pensais que si je ne disais rien, ça allait passer. Mais ça ne passait pas. Ça s’accumulait, invisible, comme une pluie fine qui trempe tout doucement.`,
+                photoUrl: getAsset('demo-silent-treatment', 4, 'image')
             },
             {
-                date: 'Progressivement',
-                title: 'Quand aimer devient [surveiller->contrôler]',
-                description: 'Je voulais savoir où tu étais, avec qui, pourquoi. Je disais que c’était de l’amour. C’était de la peur.',
-                photoUrl: getAsset('demo-dark-prison-love', 2, 'image')
+                date: 'Un soir',
+                title: 'La tension [silencieuse->invisible]',
+                description: `Un soir, tu as essayé de parler. Tu as posé des questions. J’ai répondu par monosyllabes. Je ne voulais pas créer de conflit. Mais en évitant le conflit, j’ai créé autre chose. Une distance. Froide. Inexpliquée. Tu souriais, mais je sentais ton cœur reculer.`,
+                photoUrl: getAsset('demo-silent-treatment', 1, 'image')
             },
             {
-                date: 'Le trop-plein',
-                title: 'Le jour où tu as [suffoqué->craqué]',
-                description: 'Tu as pleuré. Tu m’as dit que tu n’en pouvais plus. Je t’ai accusée d’exagérer.',
-                photoUrl: getAsset('demo-dark-prison-love', 3, 'image')
-            },
-            {
-                date: 'La fin',
-                title: 'Te perdre pour comprendre',
-                description: 'Quand tu es partie, j’ai compris que je t’avais aimée comme on possède, pas comme on respecte.',
-                photoUrl: getAsset('demo-dark-prison-love', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-dark-words-hurt',
-        experience: 'timeline',
-        ownerName: 'Maxime',
-        targetName: 'Inès',
-        musicUrl: getAsset('demo-dark-words-hurt', 0, 'music'),
-        finalMessage: 'Je ne pourrai jamais reprendre mes mots. Mais je peux enfin reconnaître ce qu’ils t’ont fait.',
-        timelineEvents: [
-            {
-                date: 'Quand on allait bien',
-                title: 'L’amour [simple->facile]',
-                description: 'On riait. On se comprenait. Je me sentais fort avec toi.',
-                photoUrl: getAsset('demo-dark-words-hurt', 1, 'image')
-            },
-            {
-                date: 'Les disputes',
-                title: 'Quand je voulais [gagner->blesser]',
-                description: 'Au lieu de parler, j’attaquais. Je savais exactement quoi dire pour faire mal.',
-                photoUrl: getAsset('demo-dark-words-hurt', 2, 'image')
-            },
-            {
-                date: 'La fracture',
-                title: 'Le regard que je n’oublierai jamais',
-                description: 'Tu m’as regardé comme si tu ne me reconnaissais plus. J’avais gagné la dispute. J’avais perdu tout le reste.',
-                photoUrl: getAsset('demo-dark-words-hurt', 3, 'image')
-            },
-            {
-                date: 'Après',
-                title: 'Comprendre trop tard',
-                description: 'Le silence m’a appris ce que mes cris m’avaient caché.',
-                photoUrl: getAsset('demo-dark-words-hurt', 4, 'image')
-            },
-        ],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    },
-    {
-        slug: 'demo-dark-collapse',
-        experience: 'timeline',
-        ownerName: 'Julien',
-        targetName: 'Manon',
-        musicUrl: getAsset('demo-dark-collapse', 0, 'music'),
-        finalMessage: 'Je croyais que tu me complétais. J’ai compris que je devais d’abord me construire.',
-        timelineEvents: [
-            {
-                date: 'Avant',
-                title: 'Tu étais mon [équilibre->béquille]',
-                description: 'Sans toi, je ne savais pas qui j’étais.',
-                photoUrl: getAsset('demo-dark-collapse', 1, 'image')
-            },
-            {
-                date: 'La rupture',
-                title: 'Quand tout s’est écroulé',
-                description: 'Tu es partie, et je n’avais plus rien. Plus de direction.',
-                photoUrl: getAsset('demo-dark-collapse', 2, 'image')
-            },
-            {
-                date: 'La chute',
-                title: 'Me perdre sans toi',
-                description: 'J’ai touché le fond. Et personne à blâmer que moi.',
-                photoUrl: getAsset('demo-dark-collapse', 3, 'image')
+                date: 'Prise de conscience',
+                title: 'Comprendre l’impact de mon silence',
+                description: `Je croyais que si je ne disais rien, je te protégeais. En réalité, je te faisais douter. Je te faisais imaginer le pire. Je te faisais sentir que tu étais responsable de mon mal-être. Sans jamais te dire pourquoi. Et chaque regard que tu baissais me tordait l’estomac.`,
+                photoUrl: getAsset('demo-silent-treatment', 5, 'image')
             },
             {
                 date: 'Aujourd’hui',
-                title: 'Me relever seul',
-                description: 'Je ne te demande plus de me sauver.',
-                photoUrl: getAsset('demo-dark-collapse', 4, 'image')
-            },
+                title: 'Le poids des [non-dits->silences]',
+                description: `Je t’aimais. Mais je t’ai fait sentir que mon silence était plus lourd que mes mots. Aujourd’hui je sais que le silence n’est pas neutre. C’est une réponse. Et parfois, c’est la plus blessante. J’aimerais pouvoir revenir en arrière et réécrire chaque moment où je t’ai laissé deviner mes peurs.`,
+                photoUrl: getAsset('demo-silent-treatment', 6, 'image')
+            }
         ],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
