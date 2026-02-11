@@ -10,6 +10,7 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Typography from '@/components/ui/Typography';
 import Card from '@/components/ui/Card';
+import ShareButton from '@/components/ui/ShareButton';
 
 interface ExperienceFormProps {
     initialData?: LovePage;
@@ -161,29 +162,26 @@ export default function ExperienceForm({ initialData, onSuccess, onCancel, locke
                         >
                             {typeof window !== 'undefined' ? window.location.origin : ''}/l/{createdSlug}
                         </a>
+                        <div className="flex-shrink-0">
+                            <ShareButton
+                                title={`Pour ${formData.targetName} 💌`}
+                                text="J'ai créé une surprise pour toi..."
+                                url={`${typeof window !== 'undefined' ? window.location.origin : ''}/l/${createdSlug}`}
+                                variant="ghost"
+                            />
+                        </div>
                     </div>
                 </Card>
 
                 <Button
                     onClick={() => {
-                        setCreatedSlug('');
-                        setFormData({
-                            slug: '',
-                            experience: 'impossible-to-say-no',
-                            ownerName: '',
-                            targetName: '',
-                            question: '',
-                            finalMessage: '',
-                            musicUrl: '',
-                            photos: [],
-                        });
-                        setTimelineEvents([{ date: '', title: '', description: '' }]);
-                        if (onSuccess) onSuccess();
+                        // Redirect to the created page
+                        window.location.href = `/l/${createdSlug}`;
                     }}
                     variant="luxury"
                     className="shadow-xl"
                 >
-                    Continuer
+                    Continuer & Voir
                 </Button>
             </motion.div>
         );
